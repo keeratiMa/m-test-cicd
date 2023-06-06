@@ -1,4 +1,8 @@
 release:
+  "1.0.1":
+    note:
+    jobs:
+      - product-product
   "1.0.0":
     note:
     jobs:
