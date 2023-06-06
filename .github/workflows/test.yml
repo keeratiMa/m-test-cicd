@@ -1,9 +1,8 @@
 name: Build Nest Stream Flink JAR and Submit Jobs
-
 on:
   push:
-    branches:
-      - 'main'
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   Build:
@@ -21,6 +20,7 @@ jobs:
 
   Deploy_product_product:
     name: Deploy_product_product
+    if: github.event.ref == 'refs/heads/main'
     needs: [Build]
     # Set the type of machine to run on
     runs-on: ubuntu-20.04
