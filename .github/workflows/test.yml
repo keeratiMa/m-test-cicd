@@ -3,7 +3,7 @@ name: Build Nest Stream Flink JAR and Submit Jobs
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   Build:
