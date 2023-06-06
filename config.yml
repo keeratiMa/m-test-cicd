@@ -1,2 +1,7 @@
-v1:
-  green: "root"
+release:
+  v1:
+    note:
+    env: green
+    jobs:
+      - product-product
+      - product-flashsale
