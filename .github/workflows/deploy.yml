@@ -1,0 +1,42 @@
+name: Deploy
+on:
+  workflow_dispatch:
+
+jobs:
+  Deploy_product_product:
+    name: Deploy_product_product
+    if: github.event.ref == 'refs/heads/main'
+    # Set the type of machine to run on
+    runs-on: ubuntu-20.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Submit product_product job
+        run: echo 'Submit product_product job'
+        
+  Deploy_product_preorder_flashsale:
+    name: Deploy_product_preorder_flashsale
+    # Set the type of machine to run on
+    runs-on: ubuntu-20.04
+    timeout-minutes: 30
+    steps:
+      - name: Submit product_preorder_flashsale job
+        run: echo 'Submit product_preorder_flashsale job'
+
+  Deploy_stock_pre_order_flashsale_used_quota:
+    name: stock_pre_order_flashsale_used_quota
+    # Set the type of machine to run on
+    runs-on: ubuntu-20.04
+    timeout-minutes: 30
+    steps:
+      - name: Submit stock_pre_order_flashsale_used_quota job
+        run: echo 'Submit stock_pre_order_flashsale_used_quota job'
+        
+  Deploy_stock_preorder_request:
+    name: stock_preorder_request
+    # Set the type of machine to run on
+    runs-on: ubuntu-20.04
+    timeout-minutes: 30
+    steps:
+      - name: Submit stock_preorder_request job
+        run: echo 'Submit stock_preorder_request job'
