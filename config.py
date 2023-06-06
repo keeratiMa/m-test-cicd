@@ -17,7 +17,7 @@ def build_cmd(job_config):
 
 def main(param):
     argParser = argparse.ArgumentParser()
-    argParser.add_argument("-e", help="env", required=True)
+    argParser.add_argument("-e", "--env", help="env", required=True)
 
     args = argParser.parse_args()
     print("-----args=%s" % args)
