@@ -1,4 +1,5 @@
 import argparse
+import subprocess
 import sys
 
 import yaml
@@ -14,6 +15,13 @@ def build_cmd(job_config):
 
     return cmd
 
+def run_os_command(cmd):
+    print("===== cmd: ", cmd)
+    output = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    print("===== output: ", output)
+    output = output.stdout
+    print("===== output stdout: ", output)
+    return output
 
 def main(param):
     argParser = argparse.ArgumentParser()
@@ -32,7 +40,9 @@ def main(param):
                 job_config = get_job_config(data, job)
                 job_config['env'] = env
                 cmd = build_cmd(job_config)
-                print(cmd)
+
+                run_os_command(cmd)
+
 
         except yaml.YAMLError as exc:
             print(exc)
