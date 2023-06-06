@@ -32,7 +32,7 @@ def main(param):
 
     # process default args
     env = args.env
-    with open("./config.yml", "r") as stream:
+    with open("./release.yml", "r") as stream:
         try:
             data = yaml.safe_load(stream)
             jobs = data['release']['1.0.0']['jobs']
