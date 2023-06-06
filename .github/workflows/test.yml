@@ -1,0 +1,40 @@
+name: Build Nest Stream Flink JAR and Submit Jobs
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  Build:
+    name: Build Nest Stream Flink JAR
+    runs-on: ubuntu-20.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Build
+        run: echo 'Build'
+
+      - name: Submit Jar
+        run: echo 'Submit Jar'
+
+
+  Deploy:
+    name: Submit flink jobs
+    needs: [Build]
+    # Set the type of machine to run on
+    runs-on: ubuntu-20.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Submit product_product job
+        run: echo 'Submit product_product job'
+        
+      - name: Submit product_preorder_flashsale job
+        run: echo 'Submit product_preorder_flashsale job'
+        
+      - name: Submit stock_pre_order_flashsale_used_quota job
+        run: echo 'Submit stock_pre_order_flashsale_used_quota job'
+        
+      - name: Submit stock_preorder_request job
+        run: echo 'Submit stock_preorder_request job'
