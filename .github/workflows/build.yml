@@ -1,0 +1,17 @@
+name: Build Nest Stream Flink JAR and Submit Jobs
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  Build:
+    name: Build Nest Stream Flink JAR
+    runs-on: ubuntu-20.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Build
+        run: echo 'Build'
+
+      - name: Submit Jar
+        run: echo 'Submit Jar'
