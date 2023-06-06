@@ -34,6 +34,9 @@ jobs:
 
       - name: Display read-yaml output
         run: echo "${{ steps.yaml-data.outputs.data }}"
+        
+      - name: test cat
+        run: sh deploy.sh
 
       - name: Submit product_product job
         run: echo 'Submit product_product job'
