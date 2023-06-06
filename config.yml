@@ -1,7 +1,13 @@
 release:
-  v1:
+  "1.0.0":
     note:
-    env: green
     jobs:
       - product-product
       - product-flashsale
+
+config:
+  product-product:
+    name: product
+    namespace: product
+    version: 1.0.0
+    config: "--mongo.databases product --mongo.copy.existing true --schema product_products.json --mongo.collections product.preorder_catalogs"
