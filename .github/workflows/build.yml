@@ -36,4 +36,4 @@ jobs:
         run: sh deploy.sh ${{ steps.yaml-data.outputs.data }}
 
       - name: Execute deploy python script
-        run: python config.py
+        run: python config.py green # todo use branch name instead.
