@@ -32,11 +32,5 @@ jobs:
           file: './config.yml'          # File to read from
           key-path: '["release","v1", "jobs"]' # Access the runs key then the using key and retuns the value.
 
-      - name: Display read-yaml output
-        run: echo "${{ steps.yaml-data.outputs.data }}"
-        
-      - name: test cat
-        run: sh deploy.sh
-
-      - name: Submit product_product job
-        run: echo 'Submit product_product job'
+      - name: Execute deploy script
+        run: sh deploy.sh ${{ steps.yaml-data.outputs.data }}
