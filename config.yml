@@ -11,3 +11,8 @@ config:
     namespace: product
     version: 1.0.0
     config: "--mongo.databases product --mongo.copy.existing true --schema product_products.json --mongo.collections product.preorder_catalogs"
+  product-flashsale:
+    name: product-flashsale
+    namespace: product
+    version: 1.0.0
+    config: "--mongo.databases product --mongo.copy.existing true --schema product_products.json --mongo.collections product.preorder_catalogs"
