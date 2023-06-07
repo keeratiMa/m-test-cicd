@@ -11,10 +11,6 @@ on:
           - beta
           - prod
         required: true
-      version:
-        description: 'version'
-        type: text
-        required: true
 
 jobs:
   release:
@@ -25,7 +21,8 @@ jobs:
           echo "Version: $VERSION"
           echo "Environment: $ENVIRONMENT"
         env:
-          VERSION: ${{ inputs.version }}
+          VERSION: ${{ github.ref_name }}
+          TYPE: ${{ github.ref_type }}
           ENVIRONMENT: ${{ inputs.environment }}
           
   Build:
