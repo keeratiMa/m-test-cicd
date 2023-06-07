@@ -38,4 +38,4 @@ jobs:
       - name: POM version
         run: echo 'Pom version = ${{env.JAR_VERSION}}'
       - name: Execute deploy python script
-        run: python config.py -e ${{github.ref}} -jv ${{env.JAR_VERSION}} # todo use branch name instead.
+        run: python config.py -b ${{github.ref}} -jv ${{env.JAR_VERSION}} # todo use branch name instead.

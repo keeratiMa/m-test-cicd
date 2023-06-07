@@ -24,30 +24,31 @@ def run_os_command(cmd):
     return output
 
 def main(param):
-    env_map = {
-        "team": ["green", "red"]
+    branch_env_map = {
+        "refs/heads/main": ["green", "red"]
     }
     argParser = argparse.ArgumentParser()
-    argParser.add_argument("-e", "--env", help="env", required=True)
+    argParser.add_argument("-b", "--branch", help="branch", required=True)
     argParser.add_argument("-jv", "--jar_version", help="jar_version", required=True)
 
     args = argParser.parse_args()
     print("-----args=%s" % args)
 
     # process default args
-    env = args.env
+    envs = branch_env_map[args.branch]
     jar_version = args.jar_version
     with open("./release.yml", "r") as stream:
         try:
             data = yaml.safe_load(stream)
             jobs = data['release']['1.0.0']['jobs']
             for job in jobs:
-                job_config = get_job_config(data, job)
-                job_config['env'] = env
-                job_config['version'] = jar_version
-                cmd = build_cmd(job_config)
+                for env in envs:
+                    job_config = get_job_config(data, job)
+                    job_config['env'] = env
+                    job_config['version'] = jar_version
+                    cmd = build_cmd(job_config)
 
-                run_os_command(cmd)
+                    run_os_command(cmd)
 
 
         except yaml.YAMLError as exc:
