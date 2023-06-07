@@ -15,12 +15,12 @@ jobs:
       - name: Build
         run: echo 'Build'
       - name: Submit Jar
-        run: echo 'Submit Jar' > /nest.jar
+        run: echo 'Submit Jar' > nest.jar
 
       - uses: actions/upload-artifact@master
         with:
           name: artifact
-          path: /
+          path: ./
   tag:
      if: github.event.ref == 'refs/heads/main'
      name: tag
@@ -30,7 +30,7 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: artifact
-          path: /
+          path: ./
     
       - uses: rickstaa/action-create-tag@v1
         with:
