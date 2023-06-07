@@ -1,0 +1,25 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        type: choice
+        options:
+          - beta
+          - prod
+        required: true
+
+jobs:
+  release:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Version: $VERSION"
+          echo "Type: $TYPE"
+          echo "Environment: $ENVIRONMENT"
+        env:
+          VERSION: ${{ github.ref_name }}
+          TYPE: ${{ github.ref_type }}
+          ENVIRONMENT: ${{ inputs.environment }}
