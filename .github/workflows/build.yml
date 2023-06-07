@@ -19,6 +19,7 @@ jobs:
     steps:
       - run: |
           echo "Version: $VERSION"
+          echo "Type: $TYPE"
           echo "Environment: $ENVIRONMENT"
         env:
           VERSION: ${{ github.ref_name }}
