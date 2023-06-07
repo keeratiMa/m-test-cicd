@@ -38,7 +38,7 @@ jobs:
           map: |
             {
               "refs/heads/team": {
-                "environment": "red,green"}"
+                "environment": "red,green"
               },
               "refs/heads/develop": {
                 "environment": "dev"
