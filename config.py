@@ -40,7 +40,9 @@ def main(param):
     with open("./release.yml", "r") as stream:
         try:
             data = yaml.safe_load(stream)
-            jobs = data['release']['1.0.0']['jobs']
+            no_snapshot_version = jar_version.replace("-SNAPSHOT", "")
+            print("no_snapshot_version=" + no_snapshot_version)
+            jobs = data['release'][no_snapshot_version]['jobs']
             for job in jobs:
                 for env in envs:
                     job_config = get_job_config(data, job)
