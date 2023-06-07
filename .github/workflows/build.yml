@@ -44,7 +44,7 @@ jobs:
                 "environment": "dev"
               },
               "refs/heads/main": {
-                "environment": "red,green"
+                "environment": "stg"
               }
             }
       - name: Set Release version env variable
