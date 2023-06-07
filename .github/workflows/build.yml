@@ -11,18 +11,27 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+       # Build       
       - name: Build
         run: echo 'Build'
-
       - name: Submit Jar
         run: echo 'Submit Jar'
-   
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: artifact
+          path: /
   tag:
      if: github.event.ref == 'refs/heads/main'
      name: tag
      runs-on: ubuntu-20.04
      needs: [Build]
      steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: artifact
+          path: /
+    
       - uses: rickstaa/action-create-tag@v1
         with:
           tag: "latest"
