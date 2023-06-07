@@ -25,7 +25,9 @@ def run_os_command(cmd):
 
 def main(param):
     branch_env_map = {
-        "refs/heads/main": ["green", "red"]
+        "refs/heads/team": ["green", "red"]
+        "refs/heads/develop": ["dev"]
+        "refs/heads/main": ["stg"],
     }
     argParser = argparse.ArgumentParser()
     argParser.add_argument("-b", "--branch", help="branch", required=True)
