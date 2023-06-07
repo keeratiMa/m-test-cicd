@@ -16,12 +16,15 @@ jobs:
       - name: Submit Jar
         run: echo 'Submit Jar'
 
-      - name: Tag and Release
-        uses: avakar/tag-and-release@v1.0.0
+  release-on-push:
+    runs-on: ubuntu-latest
+    needs: [Build]
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: rymndhng/release-on-push-action@master
         with:
-          tag_name: v1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          bump_version_scheme: minor
      
 
   Deploy:
