@@ -25,5 +25,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          java-package: jdk
+          settings-path: ${{ github.workspace }} # location for the settings.xml file
+      - name: Set Release version env variable
+        run: |
+          echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+      - name: POM version
+        run: echo 'Pom version = ${{env.RELEASE_VERSION}}'
       - name: Execute deploy python script
         run: python config.py -e green # todo use branch name instead.
