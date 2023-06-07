@@ -2,8 +2,32 @@ name: Build Nest Stream Flink JAR and Submit Jobs
 on:
   push:
     branches: [ main ]  
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        type: choice
+        options:
+          - beta
+          - prod
+        required: true
+      version:
+        description: 'version'
+        type: text
+        required: true
 
-jobs:        
+jobs:
+  release:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Version: $VERSION"
+          echo "Environment: $ENVIRONMENT"
+        env:
+          VERSION: ${{ inputs.version }}
+          ENVIRONMENT: ${{ inputs.environment }}
+          
   Build:
     name: Build Nest Stream Flink JAR
     runs-on: ubuntu-20.04
