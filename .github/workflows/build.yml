@@ -1,7 +1,7 @@
 name: Build Nest Stream Flink JAR and Submit Jobs
 on:
   push:
-    branches: [ main ]
+    branches: [ main ]  
 
 jobs:        
   Build:
@@ -15,6 +15,13 @@ jobs:
 
       - name: Submit Jar
         run: echo 'Submit Jar'
+      
+      - uses: avakar/tag-and-release@v1
+        with:
+          tag_name: v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     
 
   Deploy:
     name: Deploy_product_product
