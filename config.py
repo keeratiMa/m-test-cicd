@@ -24,20 +24,15 @@ def run_os_command(cmd):
     return output
 
 def main(param):
-    branch_env_map = {
-        "refs/heads/team": ["green", "red"],
-        "refs/heads/develop": ["dev"],
-        "refs/heads/main": ["stg"]
-    }
     argParser = argparse.ArgumentParser()
     argParser.add_argument("-b", "--branch", help="branch", required=True)
-    argParser.add_argument("-jv", "--jar_version", help="jar_version", required=True)
+    argParser.add_argument("-e", "--env", help="env", required=True)
 
     args = argParser.parse_args()
     print("-----args=%s" % args)
 
     # process default args
-    envs = branch_env_map[args.branch]
+    envs = args.env.split(",")
     jar_version = args.jar_version
     with open("./release.yml", "r") as stream:
         try:
