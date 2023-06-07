@@ -15,7 +15,7 @@ jobs:
       - name: Build
         run: echo 'Build'
       - name: Submit Jar
-        run: echo 'Submit Jar'
+        run: echo 'Submit Jar' > /nest.jar
 
       - uses: actions/upload-artifact@master
         with:
