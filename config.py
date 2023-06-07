@@ -25,8 +25,8 @@ def run_os_command(cmd):
 
 def main(param):
     argParser = argparse.ArgumentParser()
-    argParser.add_argument("-b", "--branch", help="branch", required=True)
     argParser.add_argument("-e", "--env", help="env", required=True)
+    argParser.add_argument("-jv", "--jar_version", help="jar_version", required=True)
 
     args = argParser.parse_args()
     print("-----args=%s" % args)
