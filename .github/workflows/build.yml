@@ -15,8 +15,9 @@ jobs:
 
       - name: Submit Jar
         run: echo 'Submit Jar'
-      
-      - uses: avakar/tag-and-release@v1
+
+      - name: Tag and Release
+        uses: avakar/tag-and-release@v1.0.0
         with:
           tag_name: v1.0.0
         env:
