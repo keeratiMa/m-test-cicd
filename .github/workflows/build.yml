@@ -23,6 +23,7 @@ jobs:
           tag: "latest"
           tag_exists_error: false
           message: "Latest release"
+          github_token: ${{ secrets.DEPENDABOT_TOKEN }}
 
       # Print result using the env variable.
       -  run: |
